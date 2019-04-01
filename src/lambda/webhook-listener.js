@@ -13,14 +13,13 @@ console.log('DELIVERY_TOKEN: ', DELIVERY_TOKEN)
 
 exports.handler = function (event, context, callback) {
   let body = JSON.parse(event.body)
-  console.log('event: ', body.fields.variations['en-US']);
   const entry_ids = body.fields.variations['en-US'].reduce((acc, cur) => acc.concat(cur.sys.id),[]);
   console.log('entry_ids:', entry_ids);
   client.getEntries({
     content_type: 'hero',
     'sys.id[in]': entry_ids.join(',')
   }).then(entries => {
-    console.log("entries:", JSON.stringify(entries, null, 2));
+    console.log('entries:', JSON.stringify(entries, null, 2));
     callback(null, {
       statusCode: 200,
       body: `Hello, World\nhere are your entries: \n${JSON.stringify(entries,null,2)}`
