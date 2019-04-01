@@ -12,12 +12,12 @@ console.log('ENVIRONMENT_ID: ', ENVIRONMENT_ID)
 console.log('DELIVERY_TOKEN: ', DELIVERY_TOKEN)
 
 exports.handler = function (event, context, callback) {
-  console.log('event: ', JSON.stringify(event.body, null, 2));
-  const content_type_id = event.body.fields.variations['en-US'][0].sys.contentType.sys.id;
-  const entry_ids = event.body.fields.variations['en-US'].reduce((acc, cur) => acc.concat(cur.sys.id),[]);
+  let body = JSON.parse(event.body)
+  console.log('event: ', body.fields.variations['en-US']);
+  const entry_ids = body.fields.variations['en-US'].reduce((acc, cur) => acc.concat(cur.sys.id),[]);
   console.log('entry_ids:', entry_ids);
   client.getEntries({
-    content_type: content_type_id,
+    content_type: 'hero',
     'sys.id[in]': entry_ids.join(',')
   }).then(entries => {
     console.log("entries:", JSON.stringify(entries, null, 2));
