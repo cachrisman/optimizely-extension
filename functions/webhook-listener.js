@@ -9,18 +9,25 @@ exports.handler = function(event, context, callback) {
   console.log("event: ", JSON.stringify(event, null, 2));
   const content_type_id =
     event.body.fields.variations["en-US"][0].sys.contentType.sys.id;
-  const default_entry = event.body.fields.variations["en-US"][0].sys.id;
-  const variation = event.body.fields.variations["en-US"][1].sys.id;
+  const entry_ids = event.body.fields.variations["en-US"].reduce(
+    (acc, cur) => acc.concat(cur.sys.id),
+    []
+  );
+  console.log("entry_ids:", entry_ids);
   client
     .getEntries({
       content_type: content_type_id,
-      "sys.id[in]": `${default_entry},${variation}`
+      "sys.id[in]": entry_ids.join(",")
     })
     .then(entries => {
-      console.log(entries);
+      console.log("entries:", JSON.stringify(entries, null, 2));
       callback(null, {
         statusCode: 200,
-        body: `Hello, World\nhere are your entries: ${entries}`
+        body: `Hello, World\nhere are your entries: \n${JSON.stringify(
+          entries,
+          null,
+          2
+        )}`
       });
     });
 };
