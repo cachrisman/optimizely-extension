@@ -1,9 +1,14 @@
 const contentful = require("contentful");
+
 const client = contentful.createClient({
   space: process.env.SPACE_ID,
   environment: process.env.ENVIRONMENT_ID, // defaults to 'master' if not set
   accessToken: process.env.DELIVERY_TOKEN
 });
+
+console.log("process.env.SPACE_ID: ", process.env.SPACE_ID);
+console.log("process.env.ENVIRONMENT_ID: ", process.env.ENVIRONMENT_ID);
+console.log("process.env.DELIVERY_TOKEN: ", process.env.DELIVERY_TOKEN);
 
 exports.handler = function(event, context, callback) {
   console.log("event: ", JSON.stringify(event, null, 2));
