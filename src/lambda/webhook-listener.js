@@ -12,7 +12,7 @@ console.log('ENVIRONMENT_ID: ', ENVIRONMENT_ID)
 console.log('DELIVERY_TOKEN: ', DELIVERY_TOKEN)
 
 exports.handler = function (event, context, callback) {
-  console.log('event: ', JSON.stringify(event, null, 2));
+  console.log('event: ', JSON.stringify(event.body, null, 2));
   const content_type_id = event.body.fields.variations['en-US'][0].sys.contentType.sys.id;
   const entry_ids = event.body.fields.variations['en-US'].reduce((acc, cur) => acc.concat(cur.sys.id),[]);
   console.log('entry_ids:', entry_ids);
