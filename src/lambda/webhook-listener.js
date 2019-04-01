@@ -1,4 +1,4 @@
-import contentful from 'contentful'
+const contentful = require('contentful')
 const { SPACE_ID, ENVIRONMENT_ID, DELIVERY_TOKEN } = process.env
 
 const client = contentful.createClient({
