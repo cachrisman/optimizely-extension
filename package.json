@@ -1,51 +1,28 @@
 {
   "name": "optimizely-contentful-extension",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "private": true,
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html",
-    "serve": "serve -l 1234 dist",
-    "extension:create": "contentful extension create",
-    "extension:update": "contentful extension update --force",
-    "extension:local": "contentful extension update --force --src http://localhost:1234/"
-  },
-  "optionalDependencies": {
-    "@contentful/forma-36-react-components": "2.10.4"
-  },
-  "dependencies": {
-    "axios": "^0.18.0",
-    "contentful": "^7.5.0",
-    "contentful-management": "^5.7.0",
-    "contentful-ui-extensions-sdk": "^3.4.1",
-    "react": "16.5.2",
-    "react-dom": "16.5.2",
-    "react-input-range": "^1.3.0"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "netlify-lambda serve src/lambda -c webpack.server.js",
+    "build": "netlify-lambda build src/lambda"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-0",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@contentful/forma-36-fcss": "^0.0.16",
-    "babel-eslint": "7.2.3",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-runtime": "^6.26.0",
-    "contentful-cli": "^0.16.1",
-    "eslint": "5.7.0",
-    "eslint-config-prettier": "3.1.0",
-    "eslint-config-react-app": "3.0.4",
-    "eslint-plugin-flowtype": "2.34.1",
-    "eslint-plugin-import": "2.6.0",
-    "eslint-plugin-jsx-a11y": "5.1.1",
-    "eslint-plugin-react": "7.1.0",
-    "inline-assets": "^1.4.1",
-    "lint-staged": "7.3.0",
-    "parcel-bundler": "1.10.3",
-    "parcel-plugin-bundle-visualiser": "^1.2.0",
-    "posthtml": "^0.11.3",
-    "posthtml-inline": "^1.0.0",
-    "prettier": "1.14.3",
-    "serve": "^10.0.2"
+    "babel-loader": "^7.1.4",
+    "dotenv": "^5.0.1",
+    "extract-loader": "^2.0.1",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "netlify-lambda": "^0.4.0",
+    "node-fetch": "^2.1.2",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15",
+    "webpack-dev-server": "^3.1.3"
+  },
+  "dependencies": {
+    "contentful": "^7.5.0",
+    "normalize.css": "^8.0.0"
   }
 }

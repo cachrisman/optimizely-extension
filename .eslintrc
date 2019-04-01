@@ -1,6 +1,0 @@
-{
-  "extends": ["react-app", "prettier"],
-  "rules": {
-    "getter-return": "off"
-  }
-}
