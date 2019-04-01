@@ -11,13 +11,6 @@
     "extension:update": "contentful extension update --force",
     "extension:local": "contentful extension update --force --src http://localhost:1234/"
   },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
-    ]
-  },
   "optionalDependencies": {
     "@contentful/forma-36-react-components": "2.10.4"
   },
@@ -46,7 +39,6 @@
     "eslint-plugin-import": "2.6.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.1.0",
-    "husky": "1.1.2",
     "inline-assets": "^1.4.1",
     "lint-staged": "7.3.0",
     "parcel-bundler": "1.10.3",
